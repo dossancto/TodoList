@@ -28,8 +28,6 @@ public class CreateTodoUsecase(
 
         var todoId = await _todoRepository.Create(todoEntity);
 
-        todoEntity.Id = todoId;
-
-        return todoEntity;
+        return todoEntity with { Id = todoId };
     }
 }

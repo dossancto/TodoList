@@ -21,9 +21,7 @@ public class PostgresTodoRepository(
 
         var model = PostgresTodo.AsPostgres(todo);
 
-        model.Id = id;
-
-        context.Todos.Add(model);
+        context.Todos.Add(model with { Id = id });
 
         await context.SaveChangesAsync();
 
@@ -34,7 +32,7 @@ public class PostgresTodoRepository(
     {
         var todo = await context.Todos.FindAsync(input.Id);
 
-        if(todo is null)
+        if (todo is null)
         {
             return;
         }

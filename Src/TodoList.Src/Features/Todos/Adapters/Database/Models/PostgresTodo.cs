@@ -2,38 +2,25 @@ using TodoList.Src.Features.Todos.Domain.Entities;
 
 namespace TodoList.Src.Features.Todos.Adapters.Database.Models;
 
-public class PostgresTodo
+public record PostgresTodo(string Id, string Name, string Description, bool Completed, DateTime CreatedAt)
 {
-    public string Id { get; set; } = string.Empty;
-
-    /// <summary>
-    /// This is the name of the todo
-    /// </summary>
-    public string Name { get; set; } = string.Empty;
-
-    public string Description { get; set; } = string.Empty;
-
-    public bool Completed { get; set; }
-
-    public DateTime CreatedAt { get; set; }
+    public PostgresTodo() : this("", "", "", default, default) { }
 
     public static PostgresTodo AsPostgres(Todo t)
-    => new()
-    {
-        Id = t.Id,
-        Completed = t.Completed,
-        CreatedAt = t.CreatedAt,
-        Description = t.Description,
-        Name = t.Name,
-    };
+    => new(
+        Id: t.Id,
+        Name: t.Name,
+        Description: t.Description,
+        Completed: t.Completed,
+        CreatedAt: t.CreatedAt
+      );
 
     public Todo AsEntity()
-    => new()
-    {
-        Id = Id,
-        Completed = Completed,
-        CreatedAt = CreatedAt,
-        Description = Description,
-        Name = Name,
-    };
+    => new(
+        Id: Id,
+        Name: Name,
+        Description: Description,
+        Completed: Completed,
+        CreatedAt: CreatedAt
+      );
 }
