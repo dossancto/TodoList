@@ -5,7 +5,7 @@ namespace TodoList.Src.Features.Commum.Adapters.Database.EntityFramework.Context
 
 public class ApplicationDbContext(DbContextOptions options): DbContext(options)
 {
-    public DbSet<PostgresTodo> Todos {get;} = default!;
+    public DbSet<PostgresTodo> Todos {get; set;} = default!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

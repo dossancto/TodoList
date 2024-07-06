@@ -9,7 +9,6 @@ public class PostgresTodoRepository(
     ApplicationDbContext context
 ) : ITodoRepository
 {
-    private readonly ApplicationDbContext _context = context;
     public async Task<string> Create(Todo todo)
     {
         var id = Guid.NewGuid().ToString();
@@ -18,9 +17,9 @@ public class PostgresTodoRepository(
 
         model.Id = id;
 
-        _context.Todos.Add(model);
+        context.Todos.Add(model);
 
-        await _context.SaveChangesAsync();
+        await context.SaveChangesAsync();
 
         return id;
     }
