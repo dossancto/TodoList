@@ -27,13 +27,7 @@ public static class DatabaseInjector
     }
 
     private static IServiceCollection AddDynamoDatabase(this IServiceCollection services)
-    {
-        var dynamoClient = GetDynamoClient();
-
-        services.AddSingleton<IAmazonDynamoDB>(x => dynamoClient);
-
-        return services;
-    }
+      => services.AddSingleton<IAmazonDynamoDB>(_ => GetDynamoClient());
 
     private static AmazonDynamoDBClient GetDynamoClient()
     {
