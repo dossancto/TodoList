@@ -5,5 +5,6 @@ public static class ProviderInjector
     public static IServiceCollection AddProviders(this IServiceCollection services)
     => services
             .AddValidators()
+            .AddMessageBrockers()
     ;
 }
