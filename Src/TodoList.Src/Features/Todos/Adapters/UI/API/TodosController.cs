@@ -36,4 +36,8 @@ public class TodosController(
 
         return Ok(todo);
     }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    => Ok(await selectTodo.Execute(new SelectAllTodos()));
 }

@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using TodoList.Src.Features.Commum.Adapters.Database.EntityFramework.Contexts;
 using TodoList.Src.Features.Todos.Adapters.Database.Models;
 using TodoList.Src.Features.Todos.Application.SelectTodo;
@@ -10,6 +11,9 @@ public class PostgresTodoRepository(
     ApplicationDbContext context
 ) : ITodoRepository
 {
+    public async Task<IEnumerable<Todo>> All(SelectAllTodos input)
+    => (await context.Todos.ToListAsync()).Select(x => x.AsEntity());
+
     public async Task<string> Create(Todo todo)
     {
         var id = Guid.NewGuid().ToString();

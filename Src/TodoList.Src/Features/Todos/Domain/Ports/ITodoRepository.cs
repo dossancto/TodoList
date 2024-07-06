@@ -8,4 +8,6 @@ public interface ITodoRepository
     Task<string> Create(Todo todo);
 
     Task<Todo?> FindById(SelectTodoByIdInput input);
+
+    Task<IEnumerable<Todo>> All(SelectAllTodos input);
 }

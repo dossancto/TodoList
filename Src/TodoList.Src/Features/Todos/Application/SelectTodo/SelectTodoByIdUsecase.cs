@@ -12,8 +12,6 @@ public class SelectTodoUsecase(
     public Task<Todo?> Execute(SelectTodoByIdInput input)
     => _todoRepository.FindById(input);
 
-    public async Task<IEnumerable<Todo>> Execute(SelectAllTodos input)
-    {
-        return [];
-    }
+    public Task<IEnumerable<Todo>> Execute(SelectAllTodos input)
+    => _todoRepository.All(input);
 }
