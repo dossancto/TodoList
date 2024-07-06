@@ -1,3 +1,4 @@
+using TodoList.Src.Features.Todos.Application.DeleteTodo;
 using TodoList.Src.Features.Todos.Application.SelectTodo;
 using TodoList.Src.Features.Todos.Domain.Entities;
 
@@ -10,4 +11,6 @@ public interface ITodoRepository
     Task<Todo?> FindById(SelectTodoByIdInput input);
 
     Task<IEnumerable<Todo>> All(SelectAllTodos input);
+
+    Task Delete(DeleteTodoInput input);
 }

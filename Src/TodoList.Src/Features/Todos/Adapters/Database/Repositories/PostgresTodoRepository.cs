@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TodoList.Src.Features.Commum.Adapters.Database.EntityFramework.Contexts;
 using TodoList.Src.Features.Todos.Adapters.Database.Models;
+using TodoList.Src.Features.Todos.Application.DeleteTodo;
 using TodoList.Src.Features.Todos.Application.SelectTodo;
 using TodoList.Src.Features.Todos.Domain.Entities;
 using TodoList.Src.Features.Todos.Domain.Ports;
@@ -27,6 +28,20 @@ public class PostgresTodoRepository(
         await context.SaveChangesAsync();
 
         return id;
+    }
+
+    public async Task Delete(DeleteTodoInput input)
+    {
+        var todo = await context.Todos.FindAsync(input.Id);
+
+        if(todo is null)
+        {
+            return;
+        }
+
+        context.Todos.Remove(todo);
+
+        await context.SaveChangesAsync();
     }
 
     public async Task<Todo?> FindById(SelectTodoByIdInput input)
