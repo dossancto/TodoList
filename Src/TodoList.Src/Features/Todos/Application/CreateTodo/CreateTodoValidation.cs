@@ -1,4 +1,3 @@
-using System.Data;
 using FluentValidation;
 
 namespace TodoList.Src.Features.Todos.Application.CreateTodo;

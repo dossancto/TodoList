@@ -2,14 +2,14 @@ using TodoList.Src.Features.Todos.Domain.Entities;
 
 namespace TodoList.Src.Features.Todos.Application.CreateTodo;
 
-public class CreateTodoInput
+/// <summary>
+///  This class represents a todo contract
+/// </summary>
+public record CreateTodoInput(string Name, string? Description = null)
 {
-    public required string Name { get; set; }
-
-    public string? Description { get; set; } = null;
-
     public Todo ToTodo()
-    => new (){
+    => new()
+    {
         Name = Name,
         Description = Description ?? "none",
         Completed = false,
