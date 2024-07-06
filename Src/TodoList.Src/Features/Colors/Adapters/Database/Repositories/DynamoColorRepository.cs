@@ -17,8 +17,6 @@ public class DynamoColorRepository(
     {
         var model = new DynamoColorEntity(c);
 
-        var a = dynamo;
-
         var context = new DynamoDBContext(dynamo);
 
         await context.SaveAsync(model);
