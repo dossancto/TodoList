@@ -19,7 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="Xunit" />
+    <ProjectReference Include="..\..\Src\TodoList.Src\TodoList.Src.csproj" />
   </ItemGroup>
+
 
 </Project>

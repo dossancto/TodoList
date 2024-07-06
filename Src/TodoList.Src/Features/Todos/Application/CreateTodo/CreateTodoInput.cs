@@ -6,12 +6,12 @@ public class CreateTodoInput
 {
     public required string Name { get; set; }
 
-    public string? Description { get; set; }
+    public string? Description { get; set; } = null;
 
     public Todo ToTodo()
     => new (){
         Name = Name,
-        Description = Description ?? string.Empty,
+        Description = Description ?? "none",
         Completed = false,
         CreatedAt = DateTime.UtcNow,
     };
