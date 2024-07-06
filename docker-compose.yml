@@ -1,0 +1,41 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      - POSTGRES_DB=todo-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres_password
+
+    ports:
+      - 5432:5432
+
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data
+
+    networks:
+      - postgres-network
+
+  postgres-ui:
+    image: elestio/pgadmin:REL-8_8
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=test@test.com
+      - PGADMIN_DEFAULT_PASSWORD=postgres
+
+    ports:
+      - 8888:80
+
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+    networks:
+      - postgres-network
+
+
+volumes:
+  local_pgdata:
+  pgadmin-data:
+
+
+networks:
+  postgres-network:
+    driver: bridge
