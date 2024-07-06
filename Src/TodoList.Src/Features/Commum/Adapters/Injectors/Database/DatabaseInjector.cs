@@ -49,7 +49,7 @@ public static class DatabaseInjector
         var credentialProfile = new Amazon.Runtime.CredentialManagement.CredentialProfileStoreChain()
                     .TryGetAWSCredentials(profile.NotNull(), out var credentials);
 
-        if (credentialProfile)
+        if (!credentialProfile)
         {
             return dynamoClient;
         }
