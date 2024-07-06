@@ -37,13 +37,11 @@ public static class DatabaseInjector
 
     private static AmazonDynamoDBClient GetDynamoClient()
     {
-        var dynamoClient = new AmazonDynamoDBClient();
-
         var profile = AppEnv.AWS.PROFILE;
 
         if (profile.IsNotDefined())
         {
-            return dynamoClient;
+            return new();
         }
 
         var credentialProfile = new Amazon.Runtime.CredentialManagement.CredentialProfileStoreChain()
@@ -51,7 +49,7 @@ public static class DatabaseInjector
 
         if (!credentialProfile)
         {
-            return dynamoClient;
+            return new();
         }
 
         var config = new AmazonDynamoDBConfig()
@@ -60,8 +58,6 @@ public static class DatabaseInjector
             RegionEndpoint = RegionEndpoint.GetBySystemName(AppEnv.AWS.REGION.NotNull())
         };
 
-        dynamoClient = new AmazonDynamoDBClient(credentials: credentials, clientConfig: config);
-
-        return dynamoClient;
+        return new(credentials: credentials, clientConfig: config);
     }
 }
