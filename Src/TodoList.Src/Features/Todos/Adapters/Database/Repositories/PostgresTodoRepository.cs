@@ -1,5 +1,6 @@
 using TodoList.Src.Features.Commum.Adapters.Database.EntityFramework.Contexts;
 using TodoList.Src.Features.Todos.Adapters.Database.Models;
+using TodoList.Src.Features.Todos.Application.SelectTodo;
 using TodoList.Src.Features.Todos.Domain.Entities;
 using TodoList.Src.Features.Todos.Domain.Ports;
 
@@ -23,4 +24,7 @@ public class PostgresTodoRepository(
 
         return id;
     }
+
+    public async Task<Todo?> FindById(SelectTodoByIdInput input)
+    => (await context.Todos.FindAsync(input.Id))?.AsEntity();
 }
