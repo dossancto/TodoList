@@ -4,6 +4,8 @@
 
 - Dotnet 8
 - Docker and Docker Compose
+- Terraform
+- Localstack
 
 ## Running
 
