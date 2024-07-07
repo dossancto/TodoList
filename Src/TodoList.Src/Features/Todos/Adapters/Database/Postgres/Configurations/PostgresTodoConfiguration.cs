@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using TodoList.Src.Features.Todos.Adapters.Database.Models;
+using TodoList.Src.Features.Todos.Adapters.Database.Postgres.Models;
 
-namespace TodoList.Src.Features.Todos.Adapters.Database.Configurations;
+namespace TodoList.Src.Features.Todos.Adapters.Database.Postgres.Configurations;
 
 public class PostgresTodoConfiguration : IEntityTypeConfiguration<PostgresTodo>
 {

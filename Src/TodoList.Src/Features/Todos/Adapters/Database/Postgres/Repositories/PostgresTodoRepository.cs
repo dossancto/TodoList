@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using TodoList.Src.Features.Commum.Adapters.Database.EntityFramework.Contexts;
-using TodoList.Src.Features.Todos.Adapters.Database.Models;
+using TodoList.Src.Features.Todos.Adapters.Database.Postgres.Models;
 using TodoList.Src.Features.Todos.Application.DeleteTodo;
 using TodoList.Src.Features.Todos.Application.SelectTodo;
 using TodoList.Src.Features.Todos.Domain.Entities;
 using TodoList.Src.Features.Todos.Domain.Ports;
 
-namespace TodoList.Src.Features.Todos.Adapters.Database.Repositories;
+namespace TodoList.Src.Features.Todos.Adapters.Database.Postgres.Repositories;
 
 public class PostgresTodoRepository(
     ApplicationDbContext context

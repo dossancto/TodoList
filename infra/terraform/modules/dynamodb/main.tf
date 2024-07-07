@@ -16,3 +16,22 @@ resource "aws_dynamodb_table" "colors" {
   }
 }
 
+
+resource "aws_dynamodb_table" "processing_todos" {
+  name           = "processing_todos"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 1
+  write_capacity = 1
+
+  hash_key = "todo_id"
+
+  attribute {
+    name = "todo_id"
+    type = "S"
+  }
+
+  tags = {
+    Name = "Todo"
+  }
+}
+

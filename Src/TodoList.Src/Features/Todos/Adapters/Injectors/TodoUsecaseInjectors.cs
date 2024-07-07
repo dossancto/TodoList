@@ -2,6 +2,7 @@ using TodoList.Src.Features.Todos.Application.CreateTodo;
 using TodoList.Src.Features.Todos.Application.DeleteTodo;
 using TodoList.Src.Features.Todos.Application.SelectTodo;
 using TodoList.Src.TodoList.Src.Features.Todos.Application.CompleteTodo;
+using TodoList.Src.TodoList.Src.Features.Todos.Application.ToggleProcessingTodo;
 
 namespace TodoList.Src.Features.Todos.Adapters.Injectors;
 
@@ -13,5 +14,6 @@ public static class TodoUsecaseInjectors
             .AddScoped<CreateTodoUsecase>()
             .AddScoped<DeleteTodoUsecase>()
             .AddScoped<CompleteTodoUsecase>()
+            .AddScoped<ToggleProcessingTodoUsecase>()
     ;
 }

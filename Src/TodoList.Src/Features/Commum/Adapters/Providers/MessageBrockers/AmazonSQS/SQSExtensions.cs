@@ -6,11 +6,7 @@ namespace TodoList.Src.TodoList.Src.Features.Commum.Adapters.Providers.MessageBr
 public static class SQSExtensions
 {
     public static async Task<string> QueueUrl(this IAmazonSQS sqs, QueueName queue)
-      => queue switch
-      {
-          QueueName.CompleteTodo => (await sqs.GetQueueUrlAsync(queue.QueueUrl())).QueueUrl,
-          _ => throw new NotImplementedException($"Queue {queue.ToString()} not supported")
-      };
+      => (await sqs.GetQueueUrlAsync(queue.QueueUrl())).QueueUrl;
 
     public static string QueueUrl(this QueueName queue)
       => queue switch

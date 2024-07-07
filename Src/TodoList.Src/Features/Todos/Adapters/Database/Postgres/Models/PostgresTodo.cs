@@ -1,6 +1,6 @@
 using TodoList.Src.Features.Todos.Domain.Entities;
 
-namespace TodoList.Src.Features.Todos.Adapters.Database.Models;
+namespace TodoList.Src.Features.Todos.Adapters.Database.Postgres.Models;
 
 public record PostgresTodo(string Id, string Name, string Description, bool Completed, DateTime CreatedAt)
 {
