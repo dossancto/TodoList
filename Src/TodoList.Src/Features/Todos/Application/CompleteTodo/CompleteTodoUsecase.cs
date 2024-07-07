@@ -44,6 +44,11 @@ public class CompleteTodoUsecase(
             throw new("Todo not found");
         }
 
+        if (todo.Completed)
+        {
+            throw new TodoAlrearyBeenProcessedException("Todo already processed");
+        }
+
         var messageId = await messageBrocker.SendMessageAsync(QueueName.CompleteTodo, todo);
 
         await toggleProcessing.Execute(new SetProcessingTodoInput(

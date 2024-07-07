@@ -41,9 +41,13 @@ public static class MessageBrockerInjector
 
         var config = new AmazonSQSConfig()
         {
-            ServiceURL = Configs.AppEnv.AWS.ENDPOINT.NotNull(),
             RegionEndpoint = RegionEndpoint.GetBySystemName(Configs.AppEnv.AWS.REGION.NotNull())
         };
+
+        if (Configs.AppEnv.AWS.ENDPOINT.IsDefined())
+        {
+            config.ServiceURL = Configs.AppEnv.AWS.ENDPOINT.NotNull();
+        }
 
         return new(credentials: credentials, clientConfig: config);
     }

@@ -48,9 +48,13 @@ public static class DatabaseInjector
 
         var config = new AmazonDynamoDBConfig()
         {
-            ServiceURL = AppEnv.AWS.ENDPOINT.NotNull(),
             RegionEndpoint = RegionEndpoint.GetBySystemName(AppEnv.AWS.REGION.NotNull())
         };
+
+        if (Configs.AppEnv.AWS.ENDPOINT.IsDefined())
+        {
+            config.ServiceURL = Configs.AppEnv.AWS.ENDPOINT.NotNull();
+        }
 
         return new(credentials: credentials, clientConfig: config);
     }
