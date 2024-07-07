@@ -44,4 +44,15 @@ public class PostgresTodoRepository(
 
     public async Task<Todo?> FindById(SelectTodoByIdInput input)
     => (await context.Todos.FindAsync(input.Id))?.AsEntity();
+
+    public async Task Update(Todo todo)
+    {
+        context.ChangeTracker.Clear();
+
+        var model = PostgresTodo.AsPostgres(todo);
+
+        context.Todos.Update(model);
+
+        await context.SaveChangesAsync();
+    }
 }

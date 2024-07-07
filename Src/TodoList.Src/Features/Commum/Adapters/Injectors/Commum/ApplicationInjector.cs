@@ -12,5 +12,6 @@ public static class ApplicationInjector
             .AddProviders()
             .AddRepositories()
             .AddUscases()
+            .AddModules()
     ;
 }

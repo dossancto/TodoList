@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using TodoList.Src.Features.Todos.Application.CreateTodo;
 using TodoList.Src.Features.Todos.Application.DeleteTodo;
 using TodoList.Src.Features.Todos.Application.SelectTodo;
-using TodoList.Src.TodoList.Src.Features.Commum.Domain.Ports.MessageBrockers;
 using TodoList.Src.TodoList.Src.Features.Todos.Application.CompleteTodo;
 
 namespace TodoList.Src.Features.Todos.Adapters.UI.API;
@@ -59,7 +58,9 @@ public class TodosController(
     [HttpPatch("complete/{id}")]
     public async Task<IActionResult> Complete(string id)
     {
-        var messageId = await completeTodo.Execute(new(TodoId: id));
+        var messageId = await completeTodo.Execute(new ProcessCompleteTodoInput(
+              TodoId: id
+          ));
 
         return Accepted(messageId);
     }

@@ -4,4 +4,7 @@ public record SetProcessingTodoInput(string TodoId)
 {
 }
 
-public record RemoveProcessingTodoInput(string TodoId);
+public record RemoveProcessingTodoInput(string TodoId)
+{
+}
+

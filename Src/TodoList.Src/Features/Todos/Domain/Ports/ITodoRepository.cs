@@ -13,4 +13,6 @@ public interface ITodoRepository
     Task<IEnumerable<Todo>> All(SelectAllTodos input);
 
     Task Delete(DeleteTodoInput input);
+
+    Task Update(Todo todo);
 }
