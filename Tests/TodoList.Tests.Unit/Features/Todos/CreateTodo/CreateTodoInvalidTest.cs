@@ -16,10 +16,9 @@ public class CreateTodoInvalidTest
 
         todoRepository.Create(Arg.Any<Todo>()).Returns("123");
 
-        var createTodoInput = new CreateTodoInput()
-        {
-            Name = "12",
-        };
+        var createTodoInput = new CreateTodoInput(
+            Name: "12"
+        );
 
         var usecase = new CreateTodoUsecase(createTodoValidator, todoRepository);
 

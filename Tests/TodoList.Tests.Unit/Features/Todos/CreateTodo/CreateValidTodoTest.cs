@@ -17,10 +17,9 @@ public class CreateValidTodoTest
 
         todoRepository.Create(Arg.Any<Todo>()).Returns("123");
 
-        var createTodoInput = new CreateTodoInput()
-        {
-            Name = "Completar o curso",
-        };
+        var createTodoInput = new CreateTodoInput(
+            Name: "Completar o curso"
+            );
 
         var usecase = new CreateTodoUsecase(createTodoValidator, todoRepository);
 
@@ -45,11 +44,10 @@ public class CreateValidTodoTest
 
         todoRepository.Create(Arg.Any<Todo>()).Returns("123");
 
-        var createTodoInput = new CreateTodoInput()
-        {
-            Name = "Completar o curso",
-            Description = "No começo"
-        };
+        var createTodoInput = new CreateTodoInput(
+            Name: "Completar o curso",
+            Description: "No começo"
+            );
 
         var usecase = new CreateTodoUsecase(createTodoValidator, todoRepository);
 
